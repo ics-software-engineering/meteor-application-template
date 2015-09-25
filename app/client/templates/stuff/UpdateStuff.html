@@ -1,0 +1,15 @@
+<template name="UpdateStuff">
+  <div class="well">
+    {{> quickForm
+    collection="Stuff"
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    id="UpdateStuffForm"
+    type="method-update"
+    meteormethod="updateStuff"
+    doc=this
+    buttonContent="Update"}}
+  </div>
+</template>

@@ -1,0 +1,23 @@
+<template name="ListStuff">
+  <div class="well">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each stuffList}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{quantity}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</template>

@@ -1,0 +1,14 @@
+<template name="InsertStuff">
+  <div class="well">
+    {{> quickForm
+    collection="Stuff"
+    template="bootstrap3-horizontal"
+    label-class="col-sm-2"
+    input-col-class="col-sm-10"
+
+    id="InsertStuffForm"
+    type="method"
+    meteormethod="insertStuff"
+    resetOnSuccess=true}}
+  </div>
+</template>
