@@ -1,6 +1,6 @@
 <template name="Header">
 
-  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container">
 
       <div class="navbar-header">
@@ -17,6 +17,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
+            <li><a href="{{ pathFor 'AddStuff' }}">Add Stuff</a></li>
             <li><a href="{{ pathFor 'ListStuff' }}">List Stuff</a></li>
           {{/if}}
           <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>

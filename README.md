@@ -43,21 +43,28 @@ sacha:spin                   2.3.1  Simple spinner package for Meteor
 twbs:bootstrap               3.3.5  Front-end framework for responsive, mobile first projects.
 underscore                   1.0.4  Collection of small helpers: _.map, _.each, ...
 ejson                        1.0.7  Extended and Extensible JSON library
+check                        1.0.6  Check whether a value matches a pattern
 ```
 
 Basically, we add support for:
 
-  * Forms (AutoForm, Collection2)
+  * Forms (AutoForm, Collection2, Check)
   * Accounts (accounts-password and accounts-ui-bootstrap-3)
   * Routing (iron:router)
   * Presentation (Bootstrap, Spin)
-  * Coding (underscore)
+  * Coding (underscore, ejson)
 
 **Notes:**
 
   * The template removes the AutoPublish and Insecure packages. By default, applications built using this template should explicitly publish/subscribe and use Meteor Methods.
 
-  * At the time of writing, Iron:Router was not requiring the ejson package, leading to the error `Exception in callback of async function: ReferenceError: EJSON is not defined`. If you get this error, then `meteor add ejson` will fix it.
+  * At the time of writing:
+
+     * Iron:Router did not correctly require the ejson package, leading to the error `Exception in callback of async function: ReferenceError: EJSON is not defined`. If you get this error, then `meteor add ejson` will fix it.
+
+     * AutoForm did not require the check package, leading to the error `ReferenceError: check is not defined`. If you get this error, `meteor add check` will fix it.
+
+
 
 
 

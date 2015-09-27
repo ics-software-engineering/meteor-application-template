@@ -1,23 +1,27 @@
 <template name="ListStuff">
-  <div class="well">
+  {{#OnlyIfLoggedIn}}
+    <div class="well">
 
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Quantity</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      {{#each stuffList}}
+      <table class="table">
+        <thead>
         <tr>
-          <td>{{name}}</td>
-          <td>{{quantity}}</td>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Edit</th>
         </tr>
-      {{/each}}
-      </tbody>
-    </table>
+        </thead>
 
-  </div>
+        <tbody>
+        {{#each stuffList}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{quantity}}</td>
+            <td><a href="{{pathFor 'EditStuff'}}">Edit</a></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+  {{/OnlyIfLoggedIn}}
 </template>

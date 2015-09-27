@@ -7,7 +7,7 @@ Meteor.methods({
    * Invoked by AutoForm to add a new Stuff record.
    * @param doc The Stuff document.
    */
-  insertStuff: function(doc) {
+  addStuff: function(doc) {
     check(doc, Stuff.simpleSchema());
     Stuff.insert(doc);
   },
@@ -17,7 +17,7 @@ Meteor.methods({
    * @param doc The Stuff document.
    * @param docID It's ID.
    */
-  updateStuff: function(doc, docID) {
+  editStuff: function(doc, docID) {
     check(doc, Stuff.simpleSchema());
     Stuff.update({_id: docID}, doc);
   }

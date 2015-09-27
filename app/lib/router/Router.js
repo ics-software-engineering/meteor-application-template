@@ -12,8 +12,12 @@ Router.route('/list', {
   name: 'ListStuff'
 });
 
+Router.route('/add', {
+  name: 'AddStuff'
+});
+
 
 Router.route('/stuff/:_id', {
-  name: 'UpdateStuff',
+  name: 'EditStuff',
   data: function() { return Stuff.findOne(this.params._id); }
 });
