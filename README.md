@@ -135,30 +135,59 @@ The application uses [Twitter Bootstrap](http://getbootstrap.com/), and installs
 
 Most of the Bootstrap-based layout is contained in the [app/client/templates/application](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/application) directory.
 
-Because the layout implements navbar-fixed-top, the [app/client/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/stylesheets/style.css) file adds 70px of padding to the body so that it is not covered by the navbar.
+Because the application implements navbar-fixed-top, the [app/client/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/stylesheets/style.css) file adds 70px of padding to the body so that it is not covered by the navbar.
 
 ### Routing
 
-For display and navigation amongst the four pages, the application uses [Iron Router](http://iron-meteor.github.io/iron-router/).
+For display and navigation among its four pages, the application uses [Iron Router](http://iron-meteor.github.io/iron-router/).
 
 Routing is defined in [app/lib/router/Router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/Router.js).
 
-Routing is used to define the Navbar links in [app/client/templates/application/Header.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html#L12,19,20)
+Routing is used for the Navbar links in [app/client/templates/application/Header.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html).
+
+Routing is also used to jump to the List Stuff page after successful form submission in [app/client/templates/stuff/AddStuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.js) and [app/client/templates/stuff/EditStuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.js).
 
 ### Forms
 
-forms/AutoForm
+To implement the AddStuff and EditStuff forms, the application uses [AutoForm](https://github.com/aldeed/meteor-autoform).
 
-### Authentication and authorization
+The schema defining the document structure for the Stuff collection, as well as the Meteor Methods used to insert and update document instances are in [app/lib/collections/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js).
+
+To present the forms, the application uses the quickform component.  See [app/client/templates/stuff/AddStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.html) and [app/client/templates/stuff/EditStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.html).
+
+### Authentication
+
+For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [app/lib/accounts/AccountsConfig.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/accounts/AccountsConfig.js).
+
+When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [app/server/seeds/Accounts.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Accounts.js).
+
+The application allows users to register and create new accounts at any time.
+
+### Authorization
+
+Only logged in users can manipulate Stuff documents (but any registered user can manipulate any Stuff document, even if they weren't the user that created it.)
+
+To prevent users who are not logged in from accessing pages that manipulate Stuff instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions). (While these recommendations are associated with the Flow Router guide, we follow them even though we use Iron Router).
+
+The application implements template-based authorization using an IfLoggedIn template, defined in [app/client/templates/application/IfLoggedIn.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.html) and [app/client/templates/application/IfLoggedIn.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.js).
+
+This template is used to prevent unauthorized access in the templates associated with Stuff instances, implemented in [app/client/templates/stuff](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/stuff).
 
 ### Initialization/configuration
 
-### CSS
+The [app/server/seeds](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/server/seeds) directory contains initialization code for both accounts and the Stuff collection. This code is designed to be executed only once, when the application is first run and the Mongo DB is empty.
 
+The [config](https://github.com/ics-software-engineering/meteor-application-template/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json).
+
+The [.gitignore](https://github.com/ics-software-engineering/meteor-application-template/blob/master/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
 
 ### Quality Assurance
 
-Edit JSHint to specify globals.
+#### JSHint
+
+The application includes a [.jshintrc](https://github.com/ics-software-engineering/meteor-application-template/blob/master/.jshintrc) file which defines global variables for the Meteor globals (and those defined by the packages included in this template application).
+
+In addition, it defines "Stuff" and "stuff" as globals.  You will want to edit this part of the .jshintrc file when you define your own collections.
 
 
 

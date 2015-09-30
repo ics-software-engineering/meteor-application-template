@@ -140,6 +140,7 @@
 
     // Define Collections and Globals used in this application.
     // True because they can be manipulated globally.
-    "Stuff"  : true
+    "Stuff"  : true,
+    "stuff"  : true
   }
 }
