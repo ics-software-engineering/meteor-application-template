@@ -52,7 +52,8 @@ Stuff.attachSchema(new SimpleSchema({
     type: Number,
     optional: false,
     autoform: {
-      group: stuff
+      group: stuff,
+      placeholder: "3"
     }
   }
 }));
