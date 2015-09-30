@@ -1,5 +1,5 @@
 <template name="AddStuff">
-  {{#OnlyIfLoggedIn}}
+  {{#IfLoggedIn}}
     <div class="well">
       {{> quickForm
       collection="Stuff"
@@ -12,5 +12,5 @@
       meteormethod="addStuff"
       resetOnSuccess=true}}
     </div>
-  {{/OnlyIfLoggedIn}}
+  {{/IfLoggedIn}}
 </template>

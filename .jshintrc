@@ -140,8 +140,6 @@
 
     // Define Collections and Globals used in this application.
     // True because they can be manipulated globally.
-    "StudentData"  : true,
-    "studentData"  : true
-
+    "Stuff"  : true
   }
 }

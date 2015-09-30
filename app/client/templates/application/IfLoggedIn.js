@@ -1,4 +1,4 @@
-Template.OnlyIfLoggedIn.helpers({
+Template.IfLoggedIn.helpers({
   authInProcess: function() {
     return Meteor.loggingIn();
   },

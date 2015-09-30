@@ -1,5 +1,5 @@
 <template name="ListStuff">
-  {{#OnlyIfLoggedIn}}
+  {{#IfLoggedIn}}
     <div class="well">
 
       <table class="table">
@@ -23,5 +23,5 @@
       </table>
 
     </div>
-  {{/OnlyIfLoggedIn}}
+  {{/IfLoggedIn}}
 </template>
