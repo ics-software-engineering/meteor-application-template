@@ -1,6 +1,39 @@
-A template repository for Meteor application development:
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-home.png)
 
-## Directory structure
+Meteor-application-template is a sample Meteor application that illustrates:
+
+  * A standard directory layout.
+  * A standard set of Meteor plugins and example usage (Iron Router, AutoForm, Accounts, Bootstrap, etc.)
+  * Simple authorization/authentication and use of settings files for initialization.
+  * Simple quality assurance
+
+The goal of this template is to help you get quickly started into simple application development.
+
+## Usage
+
+First, create a new GitHub repository, and clone it into your local workspace.
+
+Second, change directories into your local repo directory, and type the following:
+
+```
+% git remote add template https://github.com/ics-software-engineering/meteor-application-template.git
+% git fetch template
+% git merge -m "merge template into master" template/master
+```
+
+Now your repo should contain the contents of the template. To test that everything is OK, run the application:
+
+```
+% meteor --settings config/settings.development.json
+```
+
+If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json), or else register a new account.
+
+## Walkthrough
+
+The following sections describe the major features of this template.
+
+### Directory structure
 
 The top-level structure is:
 
@@ -12,20 +45,24 @@ config/     # holds configuration files, such as settings.development.json
 .jshintrc   # standards for JSHint.
 ```
 
-Inside the app/ directory, the Meteor app is structured as follows:
+This structure separates documentation files (such as screenshots) and configuration files (such as the settings files) from the actual Meteor application.
+
+The app/ directory contains this structure:
 
 ```
 client/
-   templates/
-   stylesheets/
-public/
-   fonts/
+  stylesheets/
+  templates/
+    application/
+    home/
+    stuff/
+lib/
+  accounts/
+  collections/
+  router/
+  accounts/
 server/
    seeds/
-lib/
-   collections/
-   router/
-   accounts/
 ```
 
 
