@@ -104,7 +104,7 @@ Basically, the template includes support for:
 
 ### Application functionality
 
-The template implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, a home page (shown above), an "AddStuff" page for creating new Stuff documents, an "EditStuff" page for editing pre-existing Stuff documents, and a "ListStuff" page that displays all defined Stuff documents.
+The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, a home page (shown above), an "AddStuff" page for creating new Stuff documents, an "EditStuff" page for editing pre-existing Stuff documents, and a "ListStuff" page that displays all defined Stuff documents.
 
 You must login to access any page other than the Home page. Here are screenshots of the other pages:
 
@@ -121,11 +121,29 @@ You must login to access any page other than the Home page. Here are screenshots
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/EditStuff.png)
 
 
-
 ### Collections
 
+The application implements a single Collection called "Stuff". Each Stuff document has two fields: a String "name" and a Number "quantity".
+
+The definition of the Stuff collection is in [app/lib/collections/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js).
+
+The Stuff collection is initialized in [app/server/seeds/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Stuff.js).
+
+### CSS
+
+The application uses [Twitter Bootstrap](http://getbootstrap.com/), and installs two Meteor packages: `twbs:bootstrap` and `ian:accounts-ui-bootstrap-3`.
+
+Most of the Bootstrap-based layout is contained in the [app/client/templates/application](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/application) directory.
+
+Because the layout implements navbar-fixed-top, the [app/client/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/stylesheets/style.css) file adds 70px of padding to the body so that it is not covered by the navbar.
+
 ### Routing
-Iron Router
+
+For display and navigation amongst the four pages, the application uses [Iron Router](http://iron-meteor.github.io/iron-router/).
+
+Routing is defined in [app/lib/router/Router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/Router.js).
+
+Routing is used to define the Navbar links in [app/client/templates/application/Header.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html#L12,19,20)
 
 ### Forms
 
