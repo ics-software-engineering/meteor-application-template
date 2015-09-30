@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="meteor-application-template : A template for quickly starting Meteor application development">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>meteor-application-template</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ics-software-engineering/meteor-application-template">View on GitHub</a>
+
+          <h1 id="project_title">meteor-application-template</h1>
+          <h2 id="project_tagline">A template for quickly starting Meteor application development</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/ics-software-engineering/meteor-application-template/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/ics-software-engineering/meteor-application-template/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-home.png" alt=""></p>
+
+<p>Meteor-application-template is a sample Meteor application that illustrates:</p>
+
+<ul>
+<li>A standard directory layout.</li>
+<li>A standard set of Meteor packages and example usage (Iron Router, AutoForm, Accounts, Bootstrap, etc.)</li>
+<li>Simple authorization/authentication and use of settings files for initialization.</li>
+<li>Simple quality assurance</li>
+</ul>
+
+<p>The goal of this template is to help you get quickly started doing Meteor development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to illustrate simple and common application capabilities.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>First, <a href="https://www.meteor.com/install">install Meteor</a>.</p>
+
+<p>Second, <a href="https://help.github.com/articles/create-a-repo/">create a new GitHub repository</a>, and clone it into your local workspace.</p>
+
+<p>Third, change directories into your local repo directory, and type the following:</p>
+
+<pre><code>% git remote add template https://github.com/ics-software-engineering/meteor-application-template.git
+% git fetch template
+% git merge -m "merge template into master" template/master
+</code></pre>
+
+<p>Now your local repo should contain the template. To test that everything is OK, run the application:</p>
+
+<pre><code>% meteor --settings config/settings.development.json
+</code></pre>
+
+<p>If all goes well, the template application will appear at <a href="http://localhost:3000">http://localhost:3000</a>.  You can login using the credentials in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json">settings.development.json</a>, or else register a new account.</p>
+
+<h2>
+<a id="walkthrough" class="anchor" href="#walkthrough" aria-hidden="true"><span class="octicon octicon-link"></span></a>Walkthrough</h2>
+
+<p>The following sections describe the major features of this template.</p>
+
+<h3>
+<a id="directory-structure" class="anchor" href="#directory-structure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directory structure</h3>
+
+<p>The top-level structure is:</p>
+
+<pre><code>app/        # holds the Meteor application sources
+doc/        # holds screenshots and other documentation files.
+config/     # holds configuration files, such as settings.development.json
+.gitignore  # don't commit IntelliJ project files and config/settings.production.json
+.jshintrc   # standards for JSHint.
+</code></pre>
+
+<p>This structure separates documentation files (such as screenshots) and configuration files (such as the settings files) from the actual Meteor application.</p>
+
+<p>The app/ directory contains this structure:</p>
+
+<pre><code>client/
+  stylesheets/
+  templates/
+    application/
+    home/
+    stuff/
+lib/
+  accounts/
+  collections/
+  router/
+  accounts/
+server/
+   seeds/
+</code></pre>
+
+<h3>
+<a id="preinstalled-packages" class="anchor" href="#preinstalled-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preinstalled packages</h3>
+
+<p>This application requires a number of additional packages useful for development. Here is a recent output of <code>meteor list</code>, with the built-in Meteor packages removed and some comments elided.</p>
+
+<pre><code>aldeed:autoform              5.5.1  Create forms with automatic insert and update
+aldeed:collection2           2.5.0  Validation of insert and update operations on the client and server.
+accounts-password            1.1.3  Password support for accounts
+ian:accounts-ui-bootstrap-3  1.2.80  Bootstrap-styled accounts-ui with multi-language support.
+iron:router                  1.0.9  Routing specifically designed for Meteor
+sacha:spin                   2.3.1  Simple spinner package for Meteor
+twbs:bootstrap               3.3.5  Front-end framework for responsive, mobile first projects.
+underscore                   1.0.4  Collection of small helpers: _.map, _.each, ...
+ejson                        1.0.7  Extended and Extensible JSON library
+check                        1.0.6  Check whether a value matches a pattern
+</code></pre>
+
+<p>Basically, the template includes support for:</p>
+
+<ul>
+<li>Forms (AutoForm, Collection2, Check)</li>
+<li>Accounts (accounts-password and accounts-ui-bootstrap-3)</li>
+<li>Routing (iron:router)</li>
+<li>Presentation (Bootstrap, Spin)</li>
+<li>Coding (underscore, ejson)</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><p>The template removes the AutoPublish and Insecure packages. Therefore, applications built using this template should explicitly publish/subscribe and use Meteor Methods.</p></li>
+<li>
+<p>At the time of writing:</p>
+
+<ul>
+<li><p>Iron:Router did not correctly require the ejson package, leading to the error <code>Exception in callback of async function: ReferenceError: EJSON is not defined</code>. If you get this error, then <code>meteor add ejson</code> will fix it.</p></li>
+<li><p>AutoForm did not require the check package, leading to the error <code>ReferenceError: check is not defined</code>. If you get this error, <code>meteor add check</code> will fix it.</p></li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="application-functionality" class="anchor" href="#application-functionality" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application functionality</h3>
+
+<p>The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, a home page (shown above), an "AddStuff" page for creating new Stuff documents, an "EditStuff" page for editing pre-existing Stuff documents, and a "ListStuff" page that displays all defined Stuff documents.</p>
+
+<p>You must login to access any page other than the Home page. Here are screenshots of the other pages:</p>
+
+<h4>
+<a id="list-stuff-page" class="anchor" href="#list-stuff-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>List Stuff page</h4>
+
+<p><img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/ListStuff.png" alt=""></p>
+
+<h4>
+<a id="add-stuff-page" class="anchor" href="#add-stuff-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add Stuff page</h4>
+
+<p><img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/AddStuff.png" alt=""></p>
+
+<h4>
+<a id="edit-stuff-page" class="anchor" href="#edit-stuff-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Edit Stuff page</h4>
+
+<p><img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/EditStuff.png" alt=""></p>
+
+<h3>
+<a id="collections" class="anchor" href="#collections" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collections</h3>
+
+<p>The application implements a single Collection called "Stuff". Each Stuff document has two fields: a String "name" and a Number "quantity".</p>
+
+<p>The definition of the Stuff collection is in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js">app/lib/collections/Stuff.js</a>.</p>
+
+<p>The Stuff collection is initialized in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Stuff.js">app/server/seeds/Stuff.js</a>.</p>
+
+<h3>
+<a id="css" class="anchor" href="#css" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS</h3>
+
+<p>The application uses <a href="http://getbootstrap.com/">Twitter Bootstrap</a>, and installs two Meteor packages: <code>twbs:bootstrap</code> and <code>ian:accounts-ui-bootstrap-3</code>.</p>
+
+<p>Most of the Bootstrap-based layout is contained in the <a href="https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/application">app/client/templates/application</a> directory.</p>
+
+<p>Because the application implements navbar-fixed-top, the <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/stylesheets/style.css">app/client/stylesheets/style.css</a> file adds 70px of padding to the body so that it is not covered by the navbar.</p>
+
+<h3>
+<a id="routing" class="anchor" href="#routing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Routing</h3>
+
+<p>For display and navigation among its four pages, the application uses <a href="http://iron-meteor.github.io/iron-router/">Iron Router</a>.</p>
+
+<p>Routing is defined in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/Router.js">app/lib/router/Router.js</a>.</p>
+
+<p>Routing is used for the Navbar links in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html">app/client/templates/application/Header.html</a>.</p>
+
+<p>Routing is also used to jump to the List Stuff page after successful form submission in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.js">app/client/templates/stuff/AddStuff.js</a> and <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.js">app/client/templates/stuff/EditStuff.js</a>.</p>
+
+<h3>
+<a id="forms" class="anchor" href="#forms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forms</h3>
+
+<p>To implement the AddStuff and EditStuff forms, the application uses <a href="https://github.com/aldeed/meteor-autoform">AutoForm</a>.</p>
+
+<p>The schema defining the document structure for the Stuff collection, as well as the Meteor Methods used to insert and update document instances are in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js">app/lib/collections/Stuff.js</a>.</p>
+
+<p>To present the forms, the application uses the quickform component.  See <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.html">app/client/templates/stuff/AddStuff.html</a> and <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.html">app/client/templates/stuff/EditStuff.html</a>.</p>
+
+<h3>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication</h3>
+
+<p>For authentication, the application uses the Meteor accounts-ui package, with some simple customization in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/accounts/AccountsConfig.js">app/lib/accounts/AccountsConfig.js</a>.</p>
+
+<p>When the application is run for the first time, a settings file (such as <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json">config/settings.development.json</a>) should be passed to Meteor. That will lead to a default account being created through the code in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Accounts.js">app/server/seeds/Accounts.js</a>.</p>
+
+<p>The application allows users to register and create new accounts at any time.</p>
+
+<h3>
+<a id="authorization" class="anchor" href="#authorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authorization</h3>
+
+<p>Only logged in users can manipulate Stuff documents (but any registered user can manipulate any Stuff document, even if they weren't the user that created it.)</p>
+
+<p>To prevent users who are not logged in from accessing pages that manipulate Stuff instances, template-based authorization is used following the recommendations in <a href="https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions">Implementing Auth Logic and Permissions</a>. (While these recommendations are associated with the Flow Router guide, we follow them even though we use Iron Router).</p>
+
+<p>The application implements template-based authorization using an IfLoggedIn template, defined in <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.html">app/client/templates/application/IfLoggedIn.html</a> and <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.js">app/client/templates/application/IfLoggedIn.js</a>.</p>
+
+<p>This template is used to prevent unauthorized access in the templates associated with Stuff instances, implemented in <a href="https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/stuff">app/client/templates/stuff</a>.</p>
+
+<h3>
+<a id="initializationconfiguration" class="anchor" href="#initializationconfiguration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization/configuration</h3>
+
+<p>The <a href="https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/server/seeds">app/server/seeds</a> directory contains initialization code for both accounts and the Stuff collection. This code is designed to be executed only once, when the application is first run and the Mongo DB is empty.</p>
+
+<p>The <a href="https://github.com/ics-software-engineering/meteor-application-template/tree/master/config">config</a> directory is intended to hold settings files.  The repository contains one file: <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json">config/settings.development.json</a>.</p>
+
+<p>The <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/.gitignore">.gitignore</a> file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.</p>
+
+<h3>
+<a id="quality-assurance" class="anchor" href="#quality-assurance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quality Assurance</h3>
+
+<h4>
+<a id="jshint" class="anchor" href="#jshint" aria-hidden="true"><span class="octicon octicon-link"></span></a>JSHint</h4>
+
+<p>The application includes a <a href="https://github.com/ics-software-engineering/meteor-application-template/blob/master/.jshintrc">.jshintrc</a> file which defines global variables for the Meteor globals (and those defined by the packages included in this template application).</p>
+
+<p>In addition, it defines "Stuff" and "stuff" as globals.  You will want to edit this part of the .jshintrc file when you define your own collections.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">meteor-application-template maintained by <a href="https://github.com/ics-software-engineering">ics-software-engineering</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
