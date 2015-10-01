@@ -189,6 +189,13 @@ The application includes a [.jshintrc](https://github.com/ics-software-engineeri
 
 In addition, it defines "Stuff" and "stuff" as globals.  You will want to edit this part of the .jshintrc file when you define your own collections.
 
+## Screencast
+
+Click the image below to watch a 25 minute walkthrough of this system.
+
+[<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=Ioe0dNyqjYg)
+
+
 
 
 
