@@ -58,6 +58,8 @@ client/
     application/
     home/
     stuff/
+public/
+  images/
 lib/
   accounts/
   collections/
@@ -194,6 +196,10 @@ In addition, it defines "Stuff" and "stuff" as globals.  You will want to edit t
 Click the image below to watch a 25 minute walkthrough of this system.
 
 [<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=Ioe0dNyqjYg)
+
+Note that since the time of this screencast:
+
+  * I've added a public/images directory containing a sample image to illustrate the use of static assets.  The home page displays this image (the Meteor logo).
 
 
 
