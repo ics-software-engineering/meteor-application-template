@@ -23,10 +23,10 @@ Third, change directories into your local repo directory, and type the following
 % git merge -m "merge template into master" template/master
 ```
 
-Now your local repo should contain the template. To test that everything is OK, run the application:
+Now your local repo should contain the template. To test that everything is OK, cd into the app directory and run the application:
 
 ```
-% meteor --settings config/settings.development.json
+% meteor --settings ../config/settings.development.json
 ```
 
 If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json), or else register a new account.
