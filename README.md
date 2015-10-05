@@ -64,7 +64,6 @@ lib/
   accounts/
   collections/
   router/
-  accounts/
 server/
    seeds/
 ```
