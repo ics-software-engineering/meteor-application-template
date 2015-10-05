@@ -200,6 +200,8 @@ Note that since the time of this screencast:
 
   * I've added a public/images directory containing a sample image to illustrate the use of static assets.  The home page displays this image (the Meteor logo).
 
+  * You must now cd into the app/ directory before running the `meteor` command.
+
 
 
 
