@@ -1,3 +1,6 @@
-.idea/
+# .gitignore standard file for ICS Software Engineering, Fall 2015
+
 *.iml
+.idea/
+
 settings.production.json
