@@ -23,6 +23,16 @@ Third, change directories into your local repo directory, and type the following
 % git merge -m "merge template into master" template/master
 ```
 
+Git may report a merge conflict due to your README.md differing from the template:
+
+```
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+If this happens, just edit your README.md to reflect the contents appropriate to your app prior to your first commit.
+
 Now your local repo should contain the template. To test that everything is OK, cd into the app directory and run the application:
 
 ```
