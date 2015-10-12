@@ -58,6 +58,15 @@
 % git merge -m "merge template into master" template/master
 </code></pre>
 
+<p>Git may report a merge conflict due to your README.md differing from the template:</p>
+
+<pre><code>Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p>If this happens, just edit your README.md to reflect the contents appropriate to your app prior to your first commit.</p>
+
 <p>Now your local repo should contain the template. To test that everything is OK, cd into the app directory and run the application:</p>
 
 <pre><code>% meteor --settings ../config/settings.development.json
