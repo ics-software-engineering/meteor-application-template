@@ -1,6 +1,11 @@
-# .gitignore standard file for ICS Software Engineering, Fall 2015
+# .gitignore standard file for ICS Software Engineering Meteor Development.
 
+# Ignore IntelliJ Project files.
 *.iml
 .idea/
 
+# If on a Mac, ignore DS_Store.
+.DS_Store
+
+# Don't commit the production settings file.
 settings.production.json
