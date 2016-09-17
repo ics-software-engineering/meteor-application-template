@@ -9,15 +9,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{pathFor 'Home'}}">meteor-application-template</a>
+        <a class="navbar-brand" href="{{pathFor 'Home_Page'}}">meteor-application-template</a>
       </div>
 
       <ul class="collapse navbar-collapse" id="main-nav">
 
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
-            <li><a href="{{ pathFor 'AddStuff' }}">Add Stuff</a></li>
-            <li><a href="{{ pathFor 'ListStuff' }}">List Stuff</a></li>
+            <li><a href="{{ pathFor 'Add_Stuff_Page' }}">Add Stuff</a></li>
+            <li><a href="{{ pathFor 'List_Stuff_Page' }}">List Stuff</a></li>
           {{/if}}
           <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>
 

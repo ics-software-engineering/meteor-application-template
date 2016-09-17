@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 
 /* eslint-disable object-shorthand */
 
-Template.IfLoggedIn.helpers({
+Template.If_Logged_In.helpers({
   /**
    * @returns {*} True if Meteor is in the process of logging in.
    */

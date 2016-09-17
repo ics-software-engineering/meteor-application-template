@@ -17,7 +17,6 @@ ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
 
 aldeed:autoform
 aldeed:collection2
-iron:router
 sacha:spin
 twbs:bootstrap
 ian:accounts-ui-bootstrap-3
@@ -28,3 +27,8 @@ check@1.2.3
 standard-minifier-css
 standard-minifier-js
 shell-server
+autopublish
+kadira:flow-router
+zimme:active-route
+kadira:blaze-layout
+arillo:flow-router-helpers

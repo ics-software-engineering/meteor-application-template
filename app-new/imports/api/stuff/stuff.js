@@ -31,11 +31,11 @@ Meteor.methods({
 });
 
 // Publish the entire Collection.  Subscription performed in the router.
-if (Meteor.isServer) {
-  Meteor.publish(stuff, function publishStuff() {
-    return Stuff.find();
-  });
-}
+// if (Meteor.isServer) {
+//   Meteor.publish(stuff, function publishStuff() {
+//     return Stuff.find();
+//   });
+// }
 
 
 /**

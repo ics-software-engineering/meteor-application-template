@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
-import { Stuff } from '../../api/stuff/Stuff.js';
+import { Stuff } from '../../api/stuff/stuff.js';
 
-Template.ListStuff.helpers({
+Template.List_Stuff_Page.helpers({
 
   /**
    * @returns {*} All of the Stuff documents.

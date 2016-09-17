@@ -1,5 +1,5 @@
-<template name="EditStuff">
-  {{#IfLoggedIn}}
+<template name="Edit_Stuff_Page">
+  {{#If_Logged_In}}
     <div class="well">
       {{> quickForm
       collection="Stuff"
@@ -10,8 +10,9 @@
       id="EditStuffForm"
       type="method-update"
       meteormethod="editStuff"
-      doc=this
-      buttonContent="Update"}}
+      doc=doc
+      buttonContent="Update"
+      }}
     </div>
-  {{/IfLoggedIn}}
+  {{/If_Logged_In}}
 </template>

@@ -1,2 +1,2 @@
-import './Accounts.js';
-import './Stuff.js';
+import './accounts.js';
+import './stuff.js';

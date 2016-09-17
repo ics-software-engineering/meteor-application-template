@@ -1,4 +1,4 @@
-import { Stuff } from '../../api/stuff/Stuff.js';
+import { Stuff } from '../../api/stuff/stuff.js';
 import { _ } from 'meteor/underscore';
 
 /* eslint-disable prefer-arrow-callback */

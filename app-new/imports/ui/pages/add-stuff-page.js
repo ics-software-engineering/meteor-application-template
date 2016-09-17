@@ -1,5 +1,5 @@
 import { AutoForm } from 'meteor/aldeed:autoform';
-import { Router } from 'meteor/iron:router';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /* eslint-disable object-shorthand, no-unused-vars */
 
@@ -10,12 +10,12 @@ import { Router } from 'meteor/iron:router';
 AutoForm.hooks({
   AddStuffForm: {
     /**
-     * After successful form submission, go to the ListStuff page.
+     * After successful form submission, go to List_Stuff_Page.
      * @param formType The form.
      * @param result The result of form submission.
      */
     onSuccess: function onSuccess(formType, result) {
-      Router.go('ListStuff');
+      FlowRouter.go('List_Stuff_Page');
     },
   },
 });

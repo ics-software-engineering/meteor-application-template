@@ -46,6 +46,10 @@
       ],
       "meteor/template-names": [
         0
+      ],
+      "max-len": [
+        2,
+        120
       ]
     }
   }
