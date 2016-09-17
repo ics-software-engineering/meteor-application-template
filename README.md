@@ -136,9 +136,9 @@ You must login to access any page other than the Home page. Here are screenshots
 
 The application implements a single Collection called "Stuff". Each Stuff document has two fields: a String "name" and a Number "quantity".
 
-The definition of the Stuff collection is in [app/lib/collections/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js).
+The definition of the Stuff collection is in [app/lib/collections/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/stuff.js).
 
-The Stuff collection is initialized in [app/server/seeds/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Stuff.js).
+The Stuff collection is initialized in [app/server/seeds/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/stuff.js).
 
 ### CSS
 
@@ -152,25 +152,25 @@ Because the application implements navbar-fixed-top, the [app/client/stylesheets
 
 For display and navigation among its four pages, the application uses [Iron Router](http://iron-meteor.github.io/iron-router/).
 
-Routing is defined in [app/lib/router/Router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/Router.js).
+Routing is defined in [app/lib/router/router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/router.js).
 
 Routing is used for the Navbar links in [app/client/templates/application/Header.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html).
 
-Routing is also used to jump to the List Stuff page after successful form submission in [app/client/templates/stuff/AddStuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.js) and [app/client/templates/stuff/EditStuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.js).
+Routing is also used to jump to the List Stuff page after successful form submission in [app/client/templates/stuff/add-stuff-page.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/add-stuff-page.js) and [app/client/templates/stuff/edit-stuff-page.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/edit-stuff-page.js).
 
 ### Forms
 
 To implement the AddStuff and EditStuff forms, the application uses [AutoForm](https://github.com/aldeed/meteor-autoform).
 
-The schema defining the document structure for the Stuff collection, as well as the Meteor Methods used to insert and update document instances are in [app/lib/collections/Stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/Stuff.js).
+The schema defining the document structure for the Stuff collection, as well as the Meteor Methods used to insert and update document instances are in [app/lib/collections/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/stuff.js).
 
 To present the forms, the application uses the quickform component.  See [app/client/templates/stuff/AddStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.html) and [app/client/templates/stuff/EditStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.html).
 
 ### Authentication
 
-For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [app/lib/accounts/AccountsConfig.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/accounts/AccountsConfig.js).
+For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [app/lib/accounts/accounts-config.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/accounts/accounts-config.js).
 
-When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [app/server/seeds/Accounts.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/Accounts.js).
+When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [app/server/seeds/accounts.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/accounts.js).
 
 The application allows users to register and create new accounts at any time.
 
@@ -180,7 +180,7 @@ Only logged in users can manipulate Stuff documents (but any registered user can
 
 To prevent users who are not logged in from accessing pages that manipulate Stuff instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions). (While these recommendations are associated with the Flow Router guide, we follow them even though we use Iron Router).
 
-The application implements template-based authorization using an IfLoggedIn template, defined in [app/client/templates/application/IfLoggedIn.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.html) and [app/client/templates/application/IfLoggedIn.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.js).
+The application implements template-based authorization using an IfLoggedIn template, defined in [app/client/templates/application/IfLoggedIn.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.html) and [app/client/templates/application/if-logged-in.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/if-logged-in.js).
 
 This template is used to prevent unauthorized access in the templates associated with Stuff instances, implemented in [app/client/templates/stuff](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/stuff).
 

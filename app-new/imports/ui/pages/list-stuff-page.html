@@ -1,0 +1,29 @@
+<template name="List_Stuff_Page">
+  {{#If_Logged_In}}
+    <div class="well">
+      {{#if Template.subscriptionsReady}}
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Edit</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          {{#each stuffList}}
+            <tr>
+              <td>{{name}}</td>
+              <td>{{quantity}}</td>
+              <td><a href="{{pathFor 'Edit_Stuff_Page' _id=_id}}">Edit</a></td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        {{> Loading}}
+      {{/if}}
+    </div>
+  {{/If_Logged_In}}
+</template>
