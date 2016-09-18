@@ -22,40 +22,11 @@
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
     "eslint-plugin-meteor": "^3.4.0",
-    "eslint-plugin-react": "^4.3.0",
     "jsdoc": "^3.4.0"
   },
   "postcss": {
     "plugins": {
       "autoprefixer": {"browsers": ["last 2 versions"]}
-    }
-  },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "meteor"
-    ],
-    "extends": [
-      "airbnb/base",
-      "plugin:meteor/recommended"
-    ],
-    "rules": {
-      "meteor/eventmap-params": [
-        2,
-        {
-          "eventParamName": "event",
-          "templateInstanceParamName": "instance"
-        }
-      ],
-      "meteor/template-names": [
-        0
-      ],
-      "prefer-arrow-callback": "off",
-      "linebreak-style": "off",
-      "max-len": ["error", 120]
     }
   }
 }
