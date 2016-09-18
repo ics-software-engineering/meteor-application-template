@@ -1,29 +1,12 @@
 <template name="Header">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{{pathFor 'Home_Page'}}">meteor-application-template</a>
-      </div>
-
-      <ul class="collapse navbar-collapse" id="main-nav">
-
-        <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
-            <li><a href="{{ pathFor 'Add_Stuff_Page' }}">Add Stuff</a></li>
-            <li><a href="{{ pathFor 'List_Stuff_Page' }}">List Stuff</a></li>
-          {{/if}}
-          <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>
-
-        </ul>
-
-      </ul>
+    <div class="ui top fixed borderless inverted menu">
+  <div class="ui container">
+      <a class="item" href="{{pathFor 'Home_Page'}}"><h1>meteor-application-template</h1></a>
+      {{#if currentUser}}
+        <a class="{{ isActiveRoute 'Add_Stuff_Page'}} item" href="{{ pathFor 'Add_Stuff_Page' }}">Add Stuff </a>
+        <a class="{{ isActiveRoute 'List_Stuff_Page'}} item" href="{{ pathFor 'List_Stuff_Page' }}">List Stuff</a>
+      {{/if}}
+      <a href="#" class="item">{{> loginButtons }} </a>
     </div>
-  </nav>
+  </div>
 </template>
