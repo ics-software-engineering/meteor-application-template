@@ -1,7 +1,5 @@
 import { Template } from 'meteor/templating';
 
-/* eslint-disable prefer-arrow-callback */
-
 Template.App_Body.onCreated(function appBodyOnCreated() {
   // placeholder: typically you will put global subscriptions here if you remove the autopublish package.
 });

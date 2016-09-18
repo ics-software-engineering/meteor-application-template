@@ -1,8 +1,6 @@
 import { Stuff } from '../../api/stuff/stuff.js';
 import { _ } from 'meteor/underscore';
 
-/* eslint-disable prefer-arrow-callback */
-
 /**
  * A list of Stuff to pre-fill the Collection.
  * @type {*[]}

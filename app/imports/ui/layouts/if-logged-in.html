@@ -5,8 +5,10 @@
     {{#if canShow}}
       {{> UI.contentBlock }}
     {{else}}
-      <p>You are not authorized to view this page.</p>
-      <p>Please login.</p>
+      <div style="padding-top: 40px" class="ui text container">
+        <p>You are not authorized to view this page.</p>
+        <p>Please login.</p>
+      </div>
     {{/if}}
   {{/if}}
 </template>

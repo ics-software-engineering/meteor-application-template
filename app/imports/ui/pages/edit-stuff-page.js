@@ -23,9 +23,11 @@ AutoForm.hooks({
 });
 
 Template.Edit_Stuff_Page.helpers({
-  doc: function getDoc() {
+  getDoc() {
     return Stuff.findOne(FlowRouter.getParam('_id'));
   },
-
+  stuffCollection() {
+    return Stuff;
+  },
 });
 

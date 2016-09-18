@@ -53,10 +53,9 @@
       "meteor/template-names": [
         0
       ],
-      "max-len": [
-        2,
-        120
-      ]
+      "prefer-arrow-callback": "off",
+      "linebreak-style": "off",
+      "max-len": ["error", 120]
     }
   }
 }

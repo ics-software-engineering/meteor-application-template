@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-/* eslint-disable object-shorthand, prefer-arrow-callback */
+/* eslint-disable object-shorthand */
 
 export const stuff = 'Stuff';  // avoid typos, this string occurs three times.
 export const Stuff = new Mongo.Collection(stuff);
