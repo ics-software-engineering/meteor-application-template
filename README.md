@@ -48,130 +48,200 @@ The following sections describe the major features of this template.
 
 ### Directory structure
 
-The top-level structure is:
+The top-level directory structure is:
 
 ```
 app/        # holds the Meteor application sources
-doc/        # holds screenshots and other documentation files.
 config/     # holds configuration files, such as settings.development.json
-.gitignore  # don't commit IntelliJ project files and config/settings.production.json
-.jshintrc   # standards for JSHint.
+doc/        # holds developer documentation, user guides, etc.
+.gitignore  # don't commit IntelliJ project files, node_modules, and settings.production.json
 ```
 
 This structure separates documentation files (such as screenshots) and configuration files (such as the settings files) from the actual Meteor application.
 
-The app/ directory contains this structure:
+The app/ directory has this structure:
 
 ```
 client/
-  stylesheets/
-  templates/
-    application/
-    home/
-    stuff/
-public/
-  images/
-lib/
-  accounts/
-  collections/
-  router/
+  lib/           # holds Semantic-UI files.
+  head.html      # the <head>
+  main.js        # import all the client-side html and js files. 
+
+imports/
+  api/           # Define collection processing code (client + server side)
+  startup/       # Define code to run when system starts up (client-only, server-only, both)
+    both/          
+    client/        
+    server/        
+  ui/
+    layouts/     # Layouts contain common elements to all pages (i.e. menubar and footer)
+    pages/       # Pages are navigated to by FlowRouter routes.
+    stylesheets/ # CSS customizations, if any.
+
+node_modules/    # managed by Meteor
+
+public/          # static assets (like images) can go here.
+  
 server/
-   seeds/
+   main.js       # import all the server-side js files.
 ```
+
+### Import conventions
+
+This system adheres to the Meteor 1.4 guideline of putting all application code in the imports/ directory, and using client/main.js and server/main.js to import the code appropriate for the client and server in an appropriate order.
+
+This system accomplishes client and server-side importing in a different manner than most Meteor sample applications. In this system, every imports/ subdirectory containing any Javascript or HTML files has a top-level index.js file that is responsible for importing all files in its associated directory.   
+
+Then, client/main.js and server/main.js are responsible for importing all the directories containing code they need. For example, here is the contents of client/main.js:
+
+```
+import '/imports/startup/client';
+import '/imports/startup/both';
+import '/imports/api/stuff';
+import '/imports/ui/layouts';
+import '/imports/ui/pages';
+import '/imports/ui/stylesheets/style.css';
+```
+
+Apart from the last line that imports style.css directly, the other lines all invoke the index.js file in the specified directory.
+
+We use this approach to make it more simple to understand what code is loaded and in what order, and to simplify debugging when some code or templates do not appear to be loaded.  In our approach, there are only two places to look for top-level imports: the main.js files in client/ and servers/, and the index.js files in import subdirectories. 
+
+Note that this two-level import structure ensures that all code and templates are loaded, but does not ensure that the symbols needed in a given file are accessible.  So, for example, a symbol bound to a collection still needs to be imported into any file that references it. For example, a server startup file needs to reference the symbol "Stuff" in order to initialize the collection, so it must import the symbol Stuff:
+
+```
+import { Stuff } from '../../api/stuff/stuff.js';
+import { _ } from 'meteor/underscore';
+
+/**
+ * A list of Stuff to pre-fill the Collection.
+ * @type {*[]}
+ */
+const stuffSeeds = [
+  { name: 'Basket', quantity: 3 },
+  { name: 'Bicycle', quantity: 2 },
+];
+
+/**
+ * Initialize the Stuff collection if empty with seed data.
+ */
+if (Stuff.find().count() === 0) {
+  _.each(stuffSeeds, function seedStuffs(stuff) {
+    Stuff.insert(stuff);
+  });
+}
+```
+
+This strategy is not ideal for all application scenarios, but for those just starting to get comfortable with importing in Javascript, it should reduce confusion and import-related bugs.
+ 
+### Naming conventions
+
+This system adopts the following naming conventions:
+
+  * Files and directories are named in all lowercase, with words separated by hyphens. Example: accounts-config.js
+  * "Global" Javascript variables (such as collections) are capitalized. Example: Stuff.
+  * Other Javascript variables are camel-case. Example: stuffSeeds.
+  * Templates representing pages are capitalized, with words separated by underscores. Example: Add_Stuff_Page.
+  * Routes to pages are named the same as their corresponding page. Example: Add_Stuff_Page.
 
 ### Preinstalled packages
 
-This application requires a number of additional packages useful for development. Here is a recent output of `meteor list`, with the built-in Meteor packages removed and some comments elided.
+This application includes a number of additional packages useful for development. Here is a recent output of `meteor list`, with base packages removed.
 
 ```
-aldeed:autoform              5.5.1  Create forms with automatic insert and update
-aldeed:collection2           2.5.0  Validation of insert and update operations on the client and server.
-accounts-password            1.1.3  Password support for accounts
-ian:accounts-ui-bootstrap-3  1.2.80  Bootstrap-styled accounts-ui with multi-language support.
-iron:router                  1.0.9  Routing specifically designed for Meteor
-sacha:spin                   2.3.1  Simple spinner package for Meteor
-twbs:bootstrap               3.3.5  Front-end framework for responsive, mobile first projects.
-underscore                   1.0.4  Collection of small helpers: _.map, _.each, ...
-ejson                        1.0.7  Extended and Extensible JSON library
-check                        1.0.6  Check whether a value matches a pattern
+accounts-password              1.3.0  Password support for accounts
+accounts-ui                    1.1.9  Simple templates to add login widgets to an app
+aldeed:autoform                5.8.1  Easily create forms with automatic insert and update.
+aldeed:collection2             2.10.0  Automatic validation of insert and update operations on the client and server.
+arillo:flow-router-helpers     0.5.2  Template helpers for flow-router
+autopublish                    1.0.7  (For prototyping only) Publish the entire database to all clients
+check                          1.2.3  Check whether a value matches a pattern
+fabienb4:autoform-semantic-ui  0.9.3  Semantic-ui template for aldeed:autoform package.
+insecure                       1.0.7  (For prototyping only) Allow all database writes from the client
+juliancwirko:postcss           1.1.1  Minifier for Meteor with PostCSS processing
+kadira:blaze-layout            2.3.0  Layout Manager for Blaze (works well with FlowRouter)
+kadira:flow-router             2.12.1  Carefully Designed Client Side Router for Meteor
+less                           2.7.5  Leaner CSS language
+sacha:spin                     2.3.1  Simple spinner package for Meteor
+semantic:ui                    2.2.1  Official Semantic UI Integration for Meteor
+useraccounts:semantic-ui       1.14.2  Accounts Templates styled for Semantic UI.
+zimme:active-route             2.3.2  Active route helpers
 ```
 
-Basically, the template includes support for:
+In a nutshell, meteor-application-template includes support for:
 
-  * Forms (AutoForm, Collection2, Check)
-  * Accounts (accounts-password and accounts-ui-bootstrap-3)
-  * Routing (iron:router)
-  * Presentation (Bootstrap, Spin)
-  * Coding (underscore, ejson)
+  * Forms (autoform, collection2, check, autoform-semantic-ui )
+  * Accounts (accounts-ui, accounts-password and useraccounts:semantic-ui)
+  * Routing (flow-router, flow-router-helpers, active-route)
+  * Presentation (semantic-ui, spin)
 
-**Notes:**
-
-  * The template removes the AutoPublish and Insecure packages. Therefore, applications built using this template should explicitly publish/subscribe and use Meteor Methods.
-
-  * At the time of writing:
-
-     * Iron:Router did not correctly require the ejson package, leading to the error `Exception in callback of async function: ReferenceError: EJSON is not defined`. If you get this error, then `meteor add ejson` will fix it.
-
-     * AutoForm did not require the check package, leading to the error `ReferenceError: check is not defined`. If you get this error, `meteor add check` will fix it.
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, a home page (shown above), an "AddStuff" page for creating new Stuff documents, an "EditStuff" page for editing pre-existing Stuff documents, and a "ListStuff" page that displays all defined Stuff documents.
+The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, each implemented by a template in the imports/ui/pages directory. 
 
-You must login to access any page other than the Home page. Here are screenshots of the other pages:
+#### Home page
+
+Implemented by the Home_Page template. 
+
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/landing-page.png)
+
+You must login to access any page other than the Home page. 
 
 #### List Stuff page
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/ListStuff.png)
+You must login to see the contents of the Stuff collection.
+
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/list-page.png)
 
 #### Add Stuff page
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/AddStuff.png)
+You must login to add new documents to the Stuff collection.
+
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/add-page.png)
 
 #### Edit Stuff page
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/EditStuff.png)
+You must login to add edit documents in the Stuff collection.
+
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/edit-page.png)
 
 
 ### Collections
 
 The application implements a single Collection called "Stuff". Each Stuff document has two fields: a String "name" and a Number "quantity".
 
-The definition of the Stuff collection is in [app/lib/collections/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/stuff.js).
+The Stuff collection is defined in [imports/api/stuff/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/api/stuff/stuff.js).
 
-The Stuff collection is initialized in [app/server/seeds/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/stuff.js).
+The Stuff collection is initialized in [imports/startup/server/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/startup/server/stuff.js).
+
+Note that this system uses autopublish to avoid the need to define publications and subscriptions.  That said, any templates presenting collection data must use `Template.subscriptionsReady` to ensure that subscription data is available before template rendering. See [imports/ui/pages/list-stuff-page.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/pages/list-stuff-page.html) for an example.
 
 ### CSS
 
-The application uses [Twitter Bootstrap](http://getbootstrap.com/), and installs two Meteor packages: `twbs:bootstrap` and `ian:accounts-ui-bootstrap-3`.
+The application uses [Semantic UI](http://semantic-ui.com/), and installs two Meteor packages: `useraccounts:semantic-ui` and `fabienb4:autoform-semantic-ui`.
 
-Most of the Bootstrap-based layout is contained in the [app/client/templates/application](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/application) directory.
+The Semantic UI theme files are located in [app/client/lib/semantic-ui](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/lib/semantic-ui) directory.
 
-Because the application implements navbar-fixed-top, the [app/client/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/stylesheets/style.css) file adds 70px of padding to the body so that it is not covered by the navbar.
+Because the application implements a menu fixed to the top of the screen, the [app/imports/ui/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/stylesheets/style.css) file adds 61px of padding to the body. Other page templates add additional padding to improve the look. 
 
 ### Routing
 
-For display and navigation among its four pages, the application uses [Iron Router](http://iron-meteor.github.io/iron-router/).
+For display and navigation among its four pages, the application uses [Flow Router](https://github.com/kadirahq/flow-router).
 
-Routing is defined in [app/lib/router/router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/router/router.js).
-
-Routing is used for the Navbar links in [app/client/templates/application/Header.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/Header.html).
-
-Routing is also used to jump to the List Stuff page after successful form submission in [app/client/templates/stuff/add-stuff-page.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/add-stuff-page.js) and [app/client/templates/stuff/edit-stuff-page.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/edit-stuff-page.js).
+Routing is defined in [imports/startup/client/router.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/startup/client/router.js).
 
 ### Forms
 
-To implement the AddStuff and EditStuff forms, the application uses [AutoForm](https://github.com/aldeed/meteor-autoform).
+To implement the Add Stuff and Edit Stuff pages, the application uses [AutoForm](https://github.com/aldeed/meteor-autoform).
 
-The schema defining the document structure for the Stuff collection, as well as the Meteor Methods used to insert and update document instances are in [app/lib/collections/stuff.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/collections/stuff.js).
-
-To present the forms, the application uses the quickform component.  See [app/client/templates/stuff/AddStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/AddStuff.html) and [app/client/templates/stuff/EditStuff.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/stuff/EditStuff.html).
+To present the forms, the application uses the quickform component.  See [imports/ui/pages/add-stuff-page.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/pages/add-stuff-page.html) and [imports/ui/pages/edit-stuff-page.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/pages/edit-stuff-page.html).
 
 ### Authentication
 
-For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [app/lib/accounts/accounts-config.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/lib/accounts/accounts-config.js).
+For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [imports/startup/both/accounts-config.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/startup/both/accounts-config.js).
 
-When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [app/server/seeds/accounts.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/server/seeds/accounts.js).
+When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [imports/startup/server/accounts.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/startup/server/accounts.js).
 
 The application allows users to register and create new accounts at any time.
 
@@ -179,15 +249,11 @@ The application allows users to register and create new accounts at any time.
 
 Only logged in users can manipulate Stuff documents (but any registered user can manipulate any Stuff document, even if they weren't the user that created it.)
 
-To prevent users who are not logged in from accessing pages that manipulate Stuff instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions). (While these recommendations are associated with the Flow Router guide, we follow them even though we use Iron Router).
+To prevent users who are not logged in from accessing pages that manipulate Stuff instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions). 
 
-The application implements template-based authorization using an IfLoggedIn template, defined in [app/client/templates/application/IfLoggedIn.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/IfLoggedIn.html) and [app/client/templates/application/if-logged-in.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/client/templates/application/if-logged-in.js).
+The application implements template-based authorization using an If_Logged_In template, defined in [imports/ui/layouts/if-logged-in.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/layouts/if-logged-in.html) and [imports/ui/layouts/if-logged-in.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/layouts/if-logged-in.js).
 
-This template is used to prevent unauthorized access in the templates associated with Stuff instances, implemented in [app/client/templates/stuff](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/templates/stuff).
-
-### Initialization/configuration
-
-The [app/server/seeds](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/server/seeds) directory contains initialization code for both accounts and the Stuff collection. This code is designed to be executed only once, when the application is first run and the Mongo DB is empty.
+### Configuration
 
 The [config](https://github.com/ics-software-engineering/meteor-application-template/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json).
 
@@ -195,24 +261,26 @@ The [.gitignore](https://github.com/ics-software-engineering/meteor-application-
 
 ### Quality Assurance
 
-#### JSHint
+#### ESLint
 
-The application includes a [.jshintrc](https://github.com/ics-software-engineering/meteor-application-template/blob/master/.jshintrc) file which defines global variables for the Meteor globals (and those defined by the packages included in this template application).
+The application includes a [.eslintrc](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/.eslintrc) file to define the coding style adhered to in this application. You can invoke ESLint from the command line as follows:
 
-In addition, it defines "Stuff" and "stuff" as globals.  You will want to edit this part of the .jshintrc file when you define your own collections.
+```
+[~/meteor-application-template/app]-> meteor npm run lint
+
+> meteor-application-template@ lint /Users/philipjohnson/meteor-application-template/app
+> eslint .
+```
+
+ESLint should run without generating any errors.  
+
+It's significantly easier to do development with ESLint integrated directly into your IDE (such as IntelliJ).
 
 ## Screencast
 
 Click the image below to watch a 25 minute walkthrough of this system.
 
 [<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=Ioe0dNyqjYg)
-
-Note that since the time of this screencast:
-
-  * I've added a public/images directory containing a sample image to illustrate the use of static assets.  The home page displays this image (the Meteor logo).
-
-  * You must now cd into the app/ directory before running the `meteor` command.
-
 
 
 
