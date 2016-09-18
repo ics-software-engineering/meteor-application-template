@@ -2,12 +2,8 @@
   "name": "meteor-application-template",
   "private": true,
   "scripts": {
-    "start": "meteor run",
-    "lint": "eslint .",
-    "pretest": "npm run lint --silent",
-    "test": "meteor test --once --driver-package dispatch:mocha-phantomjs",
-    "test-watch": "meteor test --driver-package practicalmeteor:mocha --port 3100",
-    "jsdoc": "./node_modules/.bin/jsdoc -c ./jsdoc.json -R ../doc/jsdoc-home.md -r ."
+    "start": "meteor --settings ../config/settings.development.json",
+    "lint": "eslint ."
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -20,9 +16,7 @@
     "es6-enum": "^1.0.3",
     "eslint": "^2.7.0",
     "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-meteor": "^3.4.0",
-    "jsdoc": "^3.4.0"
+    "eslint-plugin-meteor": "^3.4.0"
   },
   "postcss": {
     "plugins": {
