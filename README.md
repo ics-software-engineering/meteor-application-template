@@ -3,7 +3,7 @@
 Meteor-application-template is a sample Meteor 1.4 application that illustrates:
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html) 
-  * A standard set of Meteor packages and example usage (FlowRouter, AutoForm, Accounts, Semantic UI, etc.)
+  * A standard set of Meteor packages and example usage (FlowRouter, AutoForm, Accounts, and Semantic UI)
   * Simple authorization/authentication and use of settings files for initialization.
   * Simple quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
 
@@ -152,7 +152,7 @@ This application includes a number of additional packages useful for development
 accounts-password              1.3.0  Password support for accounts
 accounts-ui                    1.1.9  Simple templates to add login widgets to an app
 aldeed:autoform                5.8.1  Easily create forms with automatic insert and update.
-aldeed:collection2             2.10.0  Automatic validation of insert and update operations on the client and server.
+aldeed:collection2             2.10.0  Automatic validation of insert/update operations on client and server.
 arillo:flow-router-helpers     0.5.2  Template helpers for flow-router
 autopublish                    1.0.7  (For prototyping only) Publish the entire database to all clients
 check                          1.2.3  Check whether a value matches a pattern
@@ -184,7 +184,7 @@ The application implements a simple CRUD application for managing "Stuff", which
 
 Implemented by the Home_Page template. 
 
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/landing-page.png)
+![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/home-page.png)
 
 You must login to access any page other than the Home page. 
 
