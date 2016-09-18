@@ -5,7 +5,7 @@ Meteor-application-template is a sample Meteor 1.4 application that illustrates:
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html) 
   * A standard set of Meteor packages and example usage (FlowRouter, AutoForm, Accounts, Semantic UI, etc.)
   * Simple authorization/authentication and use of settings files for initialization.
-  * Simple quality assurance using [ESLint](http://eslint.org) with packages to enforce [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
+  * Simple quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
 
 The goal of this template is to help you get quickly started doing Meteor development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, and collection manipulation.
 
