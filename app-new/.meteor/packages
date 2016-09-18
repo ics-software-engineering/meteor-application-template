@@ -4,35 +4,50 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4             # Packages every Meteor app needs to have
-mobile-experience@1.0.4       # Packages for a great mobile UX
-mongo@1.1.12                   # The database Meteor supports right now
-blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
-session@1.1.6                 # Client-side reactive dictionary for your app
-jquery                  # Helpful client-side library
-tracker@1.1.0                 # Meteor's client-side reactive programming library
-
-es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
-
-aldeed:autoform
-aldeed:collection2
-sacha:spin
-accounts-password@1.3.0
+# Basic packages and utilities for most Meteor app development
+meteor-base@1.0.4
+mobile-experience@1.0.4
+mongo@1.1.12
+blaze-html-templates@1.0.4
+session@1.1.6
+jquery
+tracker@1.1.0
+es5-shim@4.6.14
+ecmascript@0.5.8
 underscore@1.0.9
 ejson@1.0.12
 check@1.2.3
 standard-minifier-js
 shell-server
-autopublish
+
+# Collection utilities
+aldeed:collection2
+
+# Form processing utilities
+aldeed:autoform
+
+# Loading spinner
+sacha:spin
+
+# Account management
+accounts-password@1.3.0
+accounts-ui
+
+# Routing
 kadira:flow-router
 zimme:active-route
 kadira:blaze-layout
 arillo:flow-router-helpers
+
+# Semantic UI (and packages to integrate with accounts and autoform)
 semantic:ui
 juliancwirko:postcss
 less
 useraccounts:semantic-ui
-accounts-ui
 fabienb4:autoform-semantic-ui
+
+# For prototyping purposes, enable autopublish and insecure
+autopublish
 insecure
+
+
