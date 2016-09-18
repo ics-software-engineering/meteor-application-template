@@ -9,3 +9,6 @@
 
 # Don't commit the production settings file.
 settings.production.json
+
+# Build node_modules locally.
+node_modules/
