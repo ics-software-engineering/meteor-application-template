@@ -278,7 +278,7 @@ It's significantly easier to do development with ESLint integrated directly into
 
 ## Screencast
 
-Click the image below to watch a 25 minute walkthrough of this system.
+Click the image below to watch a 27 minute walkthrough of this system.
 
 [<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=kEJN3kjyugs)
 
