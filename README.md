@@ -225,6 +225,8 @@ The Semantic UI theme files are located in [app/client/lib/semantic-ui](https://
 
 Because the application implements a menu fixed to the top of the screen, the [app/imports/ui/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/stylesheets/style.css) file adds 61px of padding to the body. Other page templates add additional padding to improve the look. 
 
+If you wish to customize the Semantic UI theme, follow the instructions in [Semantic-UI-Meteor](https://github.com/Semantic-Org/Semantic-UI-Meteor).
+
 ### Routing
 
 For display and navigation among its four pages, the application uses [Flow Router](https://github.com/kadirahq/flow-router).
