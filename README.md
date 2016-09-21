@@ -105,7 +105,7 @@ import '/imports/ui/stylesheets/style.css';
 
 Apart from the last line that imports style.css directly, the other lines all invoke the index.js file in the specified directory.
 
-We use this approach to make it more simple to understand what code is loaded and in what order, and to simplify debugging when some code or templates do not appear to be loaded.  In our approach, there are only two places to look for top-level imports: the main.js files in client/ and servers/, and the index.js files in import subdirectories. 
+We use this approach to make it more simple to understand what code is loaded and in what order, and to simplify debugging when some code or templates do not appear to be loaded.  In our approach, there are only two places to look for top-level imports: the main.js files in client/ and server/, and the index.js files in import subdirectories. 
 
 Note that this two-level import structure ensures that all code and templates are loaded, but does not ensure that the symbols needed in a given file are accessible.  So, for example, a symbol bound to a collection still needs to be imported into any file that references it. For example, a server startup file needs to reference the symbol "Stuff" in order to initialize the collection, so it must import the symbol Stuff:
 
@@ -174,6 +174,8 @@ In a nutshell, meteor-application-template includes support for:
   * Accounts (accounts-ui, accounts-password and useraccounts:semantic-ui)
   * Routing (flow-router, flow-router-helpers, active-route)
   * Presentation (semantic-ui, spin)
+  
+It does not provide security (both autopublish and insecure packages) remain enabled. This is intentional.
 
 
 ### Application functionality
