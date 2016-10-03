@@ -12,11 +12,11 @@
           </thead>
 
           <tbody>
-          {{#each stuffList}}
+          {{#each stuff in stuffList}}
             <tr>
-              <td>{{name}}</td>
-              <td>{{quantity}}</td>
-              <td><a href="{{pathFor 'Edit_Stuff_Page' _id=_id}}">Edit</a></td>
+              <td>{{stuff.name}}</td>
+              <td>{{stuff.quantity}}</td>
+              <td><a href="{{pathFor 'Edit_Stuff_Page' _id=stuff._id}}">Edit</a></td>
             </tr>
           {{/each}}
           </tbody>
