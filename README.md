@@ -164,7 +164,6 @@ kadira:flow-router             2.12.1  Carefully Designed Client Side Router for
 less                           2.7.5  Leaner CSS language
 sacha:spin                     2.3.1  Simple spinner package for Meteor
 semantic:ui                    2.2.1  Official Semantic UI Integration for Meteor
-useraccounts:semantic-ui       1.14.2  Accounts Templates styled for Semantic UI.
 zimme:active-route             2.3.2  Active route helpers
 ```
 
@@ -221,13 +220,13 @@ Note that this system uses autopublish to avoid the need to define publications 
 
 ### CSS
 
-The application uses [Semantic UI](http://semantic-ui.com/), and installs two Meteor packages: `useraccounts:semantic-ui` and `fabienb4:autoform-semantic-ui`.
+The application uses [Semantic UI](http://semantic-ui.com/), and installs one Meteor packages: `fabienb4:autoform-semantic-ui`.
 
 The Semantic UI theme files are located in [app/client/lib/semantic-ui](https://github.com/ics-software-engineering/meteor-application-template/tree/master/app/client/lib/semantic-ui) directory.
 
 Because the application implements a menu fixed to the top of the screen, the [app/imports/ui/stylesheets/style.css](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/stylesheets/style.css) file adds 61px of padding to the body. Other page templates add additional padding to improve the look. 
 
-If you wish to customize the Semantic UI theme, follow the instructions in [Semantic-UI-Meteor](https://github.com/Semantic-Org/Semantic-UI-Meteor).
+To learn more about the Semantic UI theme, see [Semantic-UI-Meteor](https://github.com/Semantic-Org/Semantic-UI-Meteor).
 
 ### Routing
 
@@ -285,11 +284,4 @@ It's significantly easier to do development with ESLint integrated directly into
 Click the image below to watch a 27 minute walkthrough of this system.
 
 [<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=kEJN3kjyugs)
-
-
-
-
-
-
-
 
