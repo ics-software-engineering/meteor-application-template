@@ -2,8 +2,8 @@
   "name": "meteor-application-template",
   "private": true,
   "scripts": {
-    "start": "meteor --settings ../config/settings.development.json",
-    "lint": "eslint ."
+    "start": "meteor --no-release-check --settings ../config/settings.development.json",
+    "lint": "eslint --quiet ./imports"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",

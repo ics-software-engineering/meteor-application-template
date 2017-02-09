@@ -12,3 +12,6 @@ settings.production.json
 
 # Build node_modules locally.
 node_modules/
+
+# Ignore the debug log generated when, for example, ESLint fails.
+npm-debug.log
