@@ -37,7 +37,7 @@ Now your local repo should contain the template. To test that everything is OK, 
 
 ```
 $ meteor npm install
-$ meteor npm run start
+$ meteor --settings ../config/settings.development.json
 ```
 
 If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json), or else register a new account.
@@ -272,7 +272,7 @@ The application includes a [.eslintrc](https://github.com/ics-software-engineeri
 [~/meteor-application-template/app]-> meteor npm run lint
 
 > meteor-application-template@ lint /Users/philipjohnson/meteor-application-template/app
-> eslint --quiet ./imports
+> eslint .
 ```
 
 ESLint should run without generating any errors.  
