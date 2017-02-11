@@ -16,7 +16,7 @@ To keep this codebase simple and small, some important capabilities are intentio
 
 Examples of the these capabilities will be provided elsewhere.
 
-## Typical usage
+## Installation
 
 First, [install Meteor](https://www.meteor.com/install).
 
@@ -30,16 +30,29 @@ Fourth, uncompress the zip file, and copy the following files and directories in
   * config/
   * .gitignore
   
-You don't need to copy the README.md file (you should write your own), and you don't need to copy the doc/ directory (it contains only screenshots displayed in this page of documentation.)
+You don't need to copy the README.md or index.md files (you should write your own), and you don't need to copy the doc/ directory (it contains only screenshots displayed in this page of documentation.)
 
-Now your local repo should contain the template. To test that everything is OK, cd into the app directory and run the application with the following two commands:
+Now your local repo should contain the template. To test that everything is OK, cd into the app directory install the required libraries with:
+
 
 ```
 $ meteor npm install
+meteor npm install --save babel-runtime
+```
+
+Once the libraries are installed, you can run the application by invoking the ["start" script in the package.json file](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/package.json#L5):
+
+```
 $ meteor npm run start
 ```
 
 If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/ics-software-engineering/meteor-application-template/blob/master/config/settings.development.json), or else register a new account.
+
+Lastly, you can run ESLint over the code in the imports/ directory with:
+
+```
+meteor npm run lint
+```
 
 ## Walkthrough
 
@@ -145,27 +158,6 @@ This system adopts the following naming conventions:
 
 ### Preinstalled packages
 
-This application includes a number of additional packages useful for development. Here is a recent output of `meteor list`, with base packages removed.
-
-```
-accounts-password              1.3.0  Password support for accounts
-accounts-ui                    1.1.9  Simple templates to add login widgets to an app
-aldeed:autoform                5.8.1  Easily create forms with automatic insert and update.
-aldeed:collection2             2.10.0  Automatic validation of insert/update operations on client and server.
-arillo:flow-router-helpers     0.5.2  Template helpers for flow-router
-autopublish                    1.0.7  (For prototyping only) Publish the entire database to all clients
-check                          1.2.3  Check whether a value matches a pattern
-fabienb4:autoform-semantic-ui  0.9.3  Semantic-ui template for aldeed:autoform package.
-insecure                       1.0.7  (For prototyping only) Allow all database writes from the client
-juliancwirko:postcss           1.1.1  Minifier for Meteor with PostCSS processing
-kadira:blaze-layout            2.3.0  Layout Manager for Blaze (works well with FlowRouter)
-kadira:flow-router             2.12.1  Carefully Designed Client Side Router for Meteor
-less                           2.7.5  Leaner CSS language
-sacha:spin                     2.3.1  Simple spinner package for Meteor
-semantic:ui                    2.2.1  Official Semantic UI Integration for Meteor
-zimme:active-route             2.3.2  Active route helpers
-```
-
 In a nutshell, meteor-application-template includes support for:
 
   * Forms (autoform, collection2, check, autoform-semantic-ui )
@@ -174,7 +166,6 @@ In a nutshell, meteor-application-template includes support for:
   * Presentation (semantic-ui, spin)
   
 It does not provide security (both autopublish and insecure packages) remain enabled. This is intentional.
-
 
 ### Application functionality
 
@@ -239,6 +230,8 @@ To implement the Add Stuff and Edit Stuff pages, the application uses [AutoForm]
 
 To present the forms, the application uses the quickform component.  See [imports/ui/pages/add-stuff-page.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/pages/add-stuff-page.html) and [imports/ui/pages/edit-stuff-page.html](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/ui/pages/edit-stuff-page.html).
 
+See [meteor-example-form](https://ics-software-engineering.github.io/meteor-example-form/) for a more sophisticated approach.
+
 ### Authentication
 
 For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [imports/startup/both/accounts-config.js](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/imports/startup/both/accounts-config.js).
@@ -280,7 +273,7 @@ It's significantly easier to do development with ESLint integrated directly into
 
 ## Screencast
 
-Click the image below to watch a 27 minute walkthrough of this system.
+Click the image below to watch a 27 minute walkthrough of this system. This screencast was generated for a previous version of meteor-application-template, so there may be small differences in the code base. 
 
 [<img src="https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/meteor-application-template-youtube.png" width="600">](https://www.youtube.com/watch?v=kEJN3kjyugs)
 
