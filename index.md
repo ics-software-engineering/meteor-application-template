@@ -37,7 +37,6 @@ Now your local repo should contain the template. To test that everything is OK, 
 
 ```
 $ meteor npm install
-meteor npm install --save babel-runtime
 ```
 
 Once the libraries are installed, you can run the application by invoking the ["start" script in the package.json file](https://github.com/ics-software-engineering/meteor-application-template/blob/master/app/package.json#L5):
