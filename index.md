@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template/master/doc/home-page.png)
 
-Meteor-application-template is a sample Meteor 1.4 application that is created to illustrate:
+Meteor-application-template is a sample Meteor 1.5 application that is created to illustrate:
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html) 
   * A standard set of Meteor packages and example usage (FlowRouter, AutoForm, Accounts, and Semantic UI)

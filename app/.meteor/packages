@@ -5,20 +5,21 @@
 # but you can also edit it by hand.
 
 # Basic packages and utilities for most Meteor app development
-meteor-base@1.0.4
-mobile-experience@1.0.4
-mongo@1.1.14
+meteor-base@1.1.0
+mobile-experience@1.0.5
+mongo@1.2.2
 blaze-html-templates@1.0.4
 session@1.1.7
 jquery@1.11.10
-tracker@1.1.1
+tracker@1.1.3
 es5-shim@4.6.15
-ecmascript@0.6.1
+ecmascript@0.8.2
 underscore@1.0.10
-ejson@1.0.13
-check@1.2.4
-standard-minifier-js@1.2.1
-shell-server@0.2.1
+ejson@1.0.14
+check@1.2.5
+standard-minifier-js@2.1.2
+shell-server@0.2.4
+dynamic-import
 
 # Collection utilities
 aldeed:collection2
@@ -31,7 +32,7 @@ sacha:spin
 
 # Account management
 accounts-ui@1.1.9
-accounts-password@1.3.3
+accounts-password@1.4.0
 
 # Routing
 kadira:flow-router
@@ -42,12 +43,10 @@ arillo:flow-router-helpers
 # Semantic UI (and packages to integrate with accounts and autoform)
 semantic:ui
 juliancwirko:postcss
-less@2.7.8
+less@2.7.9
 fabienb4:autoform-semantic-ui
 
 # For prototyping purposes, enable autopublish and insecure
 autopublish@1.0.7
 insecure@1.0.7
-
-
 

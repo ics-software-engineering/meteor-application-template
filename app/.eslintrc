@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module"
   },
   "plugins": [
@@ -20,7 +20,18 @@
     ],
     "meteor/template-names": "off",
     "prefer-arrow-callback": "off",
+    "arrow-parens": "off",
+    "no-plusplus": "off",
+    "func-names": "off",
     "linebreak-style": "off",
-    "max-len": ["error", 120]
+    "object-property-newline": "off",
+    "no-underscore-dangle": "off",
+    "max-len": ["error", 120],
+    "import/no-absolute-path": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/imports-first": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
