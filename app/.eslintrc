@@ -26,6 +26,7 @@
     "linebreak-style": "off",
     "object-property-newline": "off",
     "no-underscore-dangle": "off",
+    "object-shorthand": "off",
     "max-len": ["error", 120],
     "import/no-absolute-path": "off",
     "import/no-unresolved": "off",
